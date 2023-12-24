@@ -24,9 +24,9 @@ type Expression struct {
 }
 
 type Language struct {
-	ID           int    `json:"id"`
-	Name         string `json:"name"`
-	Abbreviation string `json:"abbreviation"`
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+	Code string `json:"code"`
 }
 
 type PartOfSpeech struct {

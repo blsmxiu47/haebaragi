@@ -46,14 +46,14 @@ var testExpressions = []Expression{
 
 var testLanguages = []Language{
 	{
-		ID:           1,
-		Name:         "English",
-		Abbreviation: "EN",
+		ID:   1,
+		Name: "English",
+		Code: "EN",
 	},
 	{
-		ID:           2,
-		Name:         "Deutsch",
-		Abbreviation: "DE",
+		ID:   2,
+		Name: "Deutsch",
+		Code: "DE",
 	},
 }
 
