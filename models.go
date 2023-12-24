@@ -36,10 +36,10 @@ type PartOfSpeech struct {
 }
 
 type Gender struct {
-	ID           int    `json:"id"`
-	Name         string `json:"name"`
-	Abbreviation string `json:"abbreviation"`
-	Languages    []Language
+	ID           int        `json:"id"`
+	Name         string     `json:"name"`
+	Abbreviation string     `json:"abbreviation"`
+	Languages    []Language `json:"languages"`
 }
 
 type Category struct {
