@@ -1,8 +1,8 @@
 package main
 
 type Word struct {
-	ID                  int
-	SourceText          string   `json:"id"`
+	ID                  int      `json:"id"`
+	SourceText          string   `json:"sourceText"`
 	TranslationText     string   `json:"translationText"`
 	SourceLanguage      string   `json:"sourceLanguage"`
 	TranslationLanguage string   `json:"translationLanguage"`
@@ -14,8 +14,8 @@ type Word struct {
 }
 
 type Expression struct {
-	ID                  int
-	SourceText          string `json:"id"`
+	ID                  int    `json:"id"`
+	SourceText          string `json:"sourceText"`
 	TranslationText     string `json:"translationText"`
 	SourceLanguage      string `json:"sourceLanguage"`
 	TranslationLanguage string `json:"translationLanguage"`
