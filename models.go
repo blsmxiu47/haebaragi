@@ -24,16 +24,25 @@ type Expression struct {
 }
 
 type Language struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-}
-
-type Category struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID           int    `json:"id"`
+	Name         string `json:"name"`
+	Abbreviation string `json:"abbreviation"`
 }
 
 type PartOfSpeech struct {
+	ID           int    `json:"id"`
+	Name         string `json:"name"`
+	Abbreviation string `json:"abbreviation"`
+}
+
+type Gender struct {
+	ID           int    `json:"id"`
+	Name         string `json:"name"`
+	Abbreviation string `json:"abbreviation"`
+	Languages    []Language
+}
+
+type Category struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
