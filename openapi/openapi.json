@@ -149,6 +149,24 @@
 						}
 					}
 				}
+			},
+			"post": {
+				"summary": "Add a word",
+				"operationId": "addWord",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Word"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Added"
+					}
+				}
 			}
 		},
 		"/word/{id}": {
@@ -197,6 +215,24 @@
 								}
 							}
 						}
+					}
+				}
+			},
+			"post": {
+				"summary": "Add an expression",
+				"operationId": "addExpression",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Expression"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Added"
 					}
 				}
 			}
@@ -249,6 +285,24 @@
 						}
 					}
 				}
+			},
+			"post": {
+				"summary": "Add a language",
+				"operationId": "addLanguage",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Language"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Added"
+					}
+				}
 			}
 		},
 		"/language/{id}": {
@@ -297,6 +351,24 @@
 								}
 							}
 						}
+					}
+				}
+			},
+			"post": {
+				"summary": "Add a part of speech",
+				"operationId": "addPartOfSpeech",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PartOfSpeech"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Added"
 					}
 				}
 			}
@@ -349,6 +421,24 @@
 						}
 					}
 				}
+			},
+			"post": {
+				"summary": "Add a gender",
+				"operationId": "addGender",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Gender"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Added"
+					}
+				}
 			}
 		},
 		"/gender/{id}": {
@@ -399,8 +489,25 @@
 						}
 					}
 				}
+			},
+			"post": {
+				"summary": "Add a category",
+				"operationId": "addCategory",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Category"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Added"
+					}
+				}
 			}
-
 		},
 		"/category/{id}": {
 			"get": {
