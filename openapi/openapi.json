@@ -130,7 +130,7 @@
 		}
 	},
 	"paths": {
-		"/words": {
+		"/word": {
 			"get": {
 				"summary": "Get all words",
 				"operationId": "getWords",
@@ -151,7 +151,7 @@
 				}
 			}
 		},
-		"/words/{id}": {
+		"/word/{id}": {
 			"get": {
 				"summary": "Get a word by id",
 				"operationId": "getWordById",
@@ -173,6 +173,257 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/Word"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/expression": {
+			"get": {
+				"summary": "Get all expressions",
+				"operationId": "getExpressions",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Expression"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/expression/{id}": {
+			"get": {
+				"summary": "Get an expression by id",
+				"operationId": "getExpressionById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Expression"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/language": {
+			"get": {
+				"summary": "Get all languages",
+				"operationId": "getLanguages",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Language"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/language/{id}": {
+			"get": {
+				"summary": "Get a language by id",
+				"operationId": "getLanguageById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Language"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/part-of-speech": {
+			"get": {
+				"summary": "Get all parts of speech",
+				"operationId": "getPartsOfSpeech",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/PartOfSpeech"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/part-of-speech/{id}": {
+			"get": {
+				"summary": "Get a part of speech by id",
+				"operationId": "getPartOfSpeechById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PartOfSpeech"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/gender": {
+			"get": {
+				"summary": "Get all genders",
+				"operationId": "getGenders",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Gender"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/gender/{id}": {
+			"get": {
+				"summary": "Get a gender by id",
+				"operationId": "getGenderById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Gender"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/category": {
+			"get": {
+				"summary": "Get all categories",
+				"operationId": "getCategories",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Category"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		},
+		"/category/{id}": {
+			"get": {
+				"summary": "Get a category by id",
+				"operationId": "getCategoryById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Category"
 								}
 							}
 						}
