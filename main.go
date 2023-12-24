@@ -127,12 +127,12 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 
 func handleRequests() {
 	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/word", addWordHandler)
-	http.HandleFunc("/expression", addExpressionHandler)
-	http.HandleFunc("/language", addLanguageHandler)
-	http.HandleFunc("/category", addCategoryHandler)
-	http.HandleFunc("/part-of-speech", addPartOfSpeechHandler)
-	http.HandleFunc("/gender", addGenderHandler)
+	http.HandleFunc("/word", wordHandler)
+	http.HandleFunc("/expression", expressionHandler)
+	http.HandleFunc("/language", languageHandler)
+	http.HandleFunc("/part-of-speech", partOfSpeechHandler)
+	http.HandleFunc("/gender", genderHandler)
+	http.HandleFunc("/category", categoryHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
