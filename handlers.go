@@ -3,16 +3,9 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
-	"io"
 	"log"
 	"net/http"
-	"strings"
 )
-
-// Constants
-const MAX_REQUEST_BODY_SIZE_MSG = "1MB"
-const MAX_REQUEST_BODY_SIZE_BYTES = 1048576
 
 // Testing
 var words []Word
@@ -42,63 +35,17 @@ func wordHandler(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		json.NewEncoder(w).Encode(testWords)
 	case "POST":
-		ct := r.Header.Get("content-type")
-		if ct != "application/json" {
-			msg := "Invalid content-type. Content-Type is not application/json"
-			http.Error(w, msg, http.StatusUnsupportedMediaType)
-			return
-		}
-
-		r.Body = http.MaxBytesReader(w, r.Body, MAX_REQUEST_BODY_SIZE_BYTES)
-
-		dec := json.NewDecoder(r.Body)
-		dec.DisallowUnknownFields()
-
 		var word Word
-		err := dec.Decode(&word)
-		print(r.Body)
+
+		err := decodeJSONBody(w, r, &word)
 		if err != nil {
-			var syntaxError *json.SyntaxError
-			var unmarshalTypeError *json.UnmarshalTypeError
-
-			switch {
-			case errors.As(err, &syntaxError):
-				msg := fmt.Sprintf("Request body contains badly-formed JSON (at position %d)", syntaxError.Offset)
-				http.Error(w, msg, http.StatusBadRequest)
-
-			case errors.Is(err, io.ErrUnexpectedEOF):
-				msg := "Request body contains badly-formed JSON"
-				http.Error(w, msg, http.StatusBadRequest)
-
-			case errors.As(err, &unmarshalTypeError):
-				msg := fmt.Sprintf("Request body contains an invalid value for the %q field (at position %d)", unmarshalTypeError.Field, unmarshalTypeError.Offset)
-				http.Error(w, msg, http.StatusBadRequest)
-
-			case strings.HasPrefix(err.Error(), "json: unknown field "):
-				fieldName := strings.TrimPrefix(err.Error(), "json: unknown field ")
-				msg := fmt.Sprintf("Request body contains unknown field %s", fieldName)
-				http.Error(w, msg, http.StatusBadRequest)
-
-			case errors.Is(err, io.EOF):
-				msg := "Request body must not be empty"
-				http.Error(w, msg, http.StatusBadRequest)
-
-			case err.Error() == "http: request body too large":
-				msg := fmt.Sprintf("Request body must not be larger than %s", MAX_REQUEST_BODY_SIZE_MSG)
-				http.Error(w, msg, http.StatusRequestEntityTooLarge)
-
-			default:
-				log.Print(err.Error())
+			var mr *malformedRequest
+			if errors.As(err, &mr) {
+				http.Error(w, mr.msg, mr.status)
+			} else {
+				log.Println(err.Error())
 				http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			}
-
-			return
-		}
-
-		err = dec.Decode(&struct{}{})
-		if !errors.Is(err, io.EOF) {
-			msg := "Request body must only contain a single JSON object"
-			http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
 
