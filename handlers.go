@@ -95,6 +95,13 @@ func wordHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		err = dec.Decode(&struct{}{})
+		if !errors.Is(err, io.EOF) {
+			msg := "Request body must only contain a single JSON object"
+			http.Error(w, msg, http.StatusBadRequest)
+			return
+		}
+
 		// TODO: Add validation for word fields
 
 		err = addWordToStore(word)
