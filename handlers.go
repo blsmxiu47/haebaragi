@@ -20,7 +20,6 @@ func addWordToStore(word Word) error {
 
 // Testing
 var languages []Language
-var nextLanguageID int = 1
 
 func addLanguageToStore(language Language) error {
 	language.ID = nextWordID
