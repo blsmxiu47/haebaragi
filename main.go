@@ -122,7 +122,16 @@ var testPartsOfSpeech = []PartOfSpeech{
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("해바라기에 환영합니다!"))
+	w.Write([]byte("\n해바라기에 환영합니다!\n\n"))
+
+	w.Write([]byte("Endpoints:\n\n"))
+	w.Write([]byte("GET /word              POST /word\n"))
+	// w.Write([]byte("GET /expression         POST /expression\n"))
+	w.Write([]byte("GET /language	       POST /language\n"))
+	w.Write([]byte("GET /part-of-speech    POST /part-of-speech\n"))
+	w.Write([]byte("GET /gender            POST /gender\n"))
+	w.Write([]byte("GET /category	       POST /category\n"))
+	w.Write([]byte("\n"))
 }
 
 func handleRequests() {
